@@ -17,9 +17,7 @@ def stepThrough(coll, val1, val2) {
   coll[1] = val1
   coll[2] = val2
   // Mutate collection
-  println coll
   correctCollection(coll)
-  println coll
 }
 
 def correctCollection(coll) {
@@ -55,4 +53,16 @@ vals = text.split(',').collect{
   Integer.parseInt(it)
 }
 
-stepThrough(vals, 12, 2)
+(1..99).find { noun ->
+  (1..99).find { verb ->
+    tempColl = vals.clone()
+    stepThrough(tempColl, noun, verb)
+    // Magic Number from Problem
+    if (tempColl[0] == 19690720) {
+      println "Noun: " + noun + " Verb: " + verb
+      println "Final Answer: " + (100 * noun + verb)
+      return true
+    }
+    return
+  }
+}
