@@ -22,15 +22,13 @@ def stepThrough(coll, val1, val2) {
 
 def correctCollection(coll) {
   coll.eachOpcodeWithTermination{ it, i ->
-    if (i % 4 == 0) {
-      opCode = coll[i]
-      val1 = coll.get(coll[i+1])
-      val2 = coll.get(coll[i+2])
-      dest = coll[i+3]
-      // If opcode is `1` then we perform addition, otherwise multiply
-      result = opCode == 1 ? (val1 + val2) : (val1 * val2)
-      coll[dest] = result
-    }
+    opCode = coll[i]
+    val1 = coll.get(coll[i+1])
+    val2 = coll.get(coll[i+2])
+    dest = coll[i+3]
+    // If opcode is `1` then we perform addition, otherwise multiply
+    result = opCode == 1 ? (val1 + val2) : (val1 * val2)
+    coll[dest] = result
   }
 }
 
